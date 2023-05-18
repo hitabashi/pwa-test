@@ -3,6 +3,7 @@ const main = document.querySelector('main');
 const sourceSelector = document.querySelector('#sourceSelector');
 const defaultSource = 'abc-news-au';
 
+
 const publicVapidKey =
   'BNWDl9RZjaY2lCkWfRflg_MsM4BG0-UEVbLyQ66QQ_U0JZwBmmpOVfvRtkWoQxNQ8aqnIuQxtJ6RkFVPX5v1fwU';
 
