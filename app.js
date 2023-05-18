@@ -3,7 +3,6 @@ const main = document.querySelector('main');
 const sourceSelector = document.querySelector('#sourceSelector');
 const defaultSource = 'abc-news-au';
 
-
 const publicVapidKey =
   'BNWDl9RZjaY2lCkWfRflg_MsM4BG0-UEVbLyQ66QQ_U0JZwBmmpOVfvRtkWoQxNQ8aqnIuQxtJ6RkFVPX5v1fwU';
 
@@ -21,20 +20,24 @@ const publicVapidKey =
     try {
       register = await navigator.serviceWorker.register('sw.js');
       console.log('SW registered');
+      console.log(register.pushManager);
+      const current = await register.pushManager.getSubscription()
+      await current.unsubscribe();
+      console.log(await register.pushManager.permissionState({ userVisibleOnly: true }));
 
       const subscription = await register.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
       });
-      console.log('createelement start')
+      console.log('createelement start');
       const div = document.createElement('div');
-      console.log('createelement end')
-      console.log('div start')
+      console.log('createelement end');
+      console.log('div start');
       div.innerHTML = JSON.stringify(subscription);
-      console.log('div end')
-      console.log('document start')
+      console.log('div end');
+      console.log('document start');
       document.body.appendChild(div);
-      console.log('document end')
+      console.log('document end');
       console.log('Push registered');
       console.log(subscription);
 
@@ -47,6 +50,7 @@ const publicVapidKey =
       // });
       console.log('Push Sent');
     } catch (e) {
+      console.log(e);
       console.log('SW faild');
     }
   }
