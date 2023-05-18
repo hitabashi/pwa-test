@@ -6,7 +6,12 @@ const defaultSource = 'abc-news-au';
 const publicVapidKey =
   'BNWDl9RZjaY2lCkWfRflg_MsM4BG0-UEVbLyQ66QQ_U0JZwBmmpOVfvRtkWoQxNQ8aqnIuQxtJ6RkFVPX5v1fwU';
 
-(async () => {
+
+document.getElementById('btn').addEventListener('click', () => {
+  sample();
+})
+
+async function sample() {
   // updateNews();
   // await updateSources();
 
@@ -54,7 +59,7 @@ const publicVapidKey =
       console.log('SW faild');
     }
   }
-})();
+};
 
 /**
  * プルダウンの値を設定
