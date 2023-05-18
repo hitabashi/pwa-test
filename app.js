@@ -6,10 +6,9 @@ const defaultSource = 'abc-news-au';
 const publicVapidKey =
   'BNWDl9RZjaY2lCkWfRflg_MsM4BG0-UEVbLyQ66QQ_U0JZwBmmpOVfvRtkWoQxNQ8aqnIuQxtJ6RkFVPX5v1fwU';
 
-
 document.getElementById('btn').addEventListener('click', () => {
   sample();
-})
+});
 
 async function sample() {
   // updateNews();
@@ -26,8 +25,10 @@ async function sample() {
       register = await navigator.serviceWorker.register('sw.js');
       console.log('SW registered');
       console.log(register.pushManager);
-      const current = await register.pushManager.getSubscription()
-      await current.unsubscribe();
+      const current = await register.pushManager.getSubscription();
+      if (current) {
+        await current.unsubscribe();
+      }
       console.log(await register.pushManager.permissionState({ userVisibleOnly: true }));
 
       const subscription = await register.pushManager.subscribe({
@@ -59,7 +60,7 @@ async function sample() {
       console.log('SW faild');
     }
   }
-};
+}
 
 /**
  * プルダウンの値を設定
