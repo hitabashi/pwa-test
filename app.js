@@ -58,6 +58,13 @@ async function sample() {
     } catch (e) {
       console.log(e);
       console.log('SW faild');
+      const div = document.createElement('div');
+      console.log('createelement end');
+      console.log('div start');
+      div.innerHTML = JSON.stringify(e.message);
+      console.log('div end');
+      console.log('document start');
+      document.body.appendChild(div);
     }
   }
 }
