@@ -9,6 +9,6 @@
   "author": "okumurakengo <okumurakengo1a@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "web-push": "^3.3.5"
+    "web-push": "^3.6.1"
   }
 }
